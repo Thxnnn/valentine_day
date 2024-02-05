@@ -37,15 +37,45 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function(){
-        $(".container").mouseenter(function(){
-            $(".card").stop().animate({
-                top:"-90px"
+    // $(document).ready(function(){
+    //     $(".container").mouseenter(function(){
+    //         $(".card").stop().animate({
+    //             top:"-90px"
+    //         }, "slow");
+    //     }).mouseleave(function(){
+    //         $(".card").stop().animate({
+    //             top:0
+    //         }, "slow");
+    //     })
+    // })
+
+    $(document).ready(function () {
+        var $container = $(".container");
+        var $card = $(".card");
+
+        $container.mouseenter(function () {
+            $card.stop().animate({
+                top: "-90px"
             }, "slow");
-        }).mouseleave(function(){
-            $(".card").stop().animate({
-                top:0
+        }).mouseleave(function () {
+            $card.stop().animate({
+                top: 0
             }, "slow");
-        })
-    })
+        });
+
+        $container.click(function () {
+            $card.stop().animate({
+                top: 0
+            }, "slow");
+        });
+
+        
+        $(document).click(function (e) {
+            if (!$(e.target).closest(".container").length) {
+                $card.stop().animate({
+                    top: 0
+                }, "slow");
+            }
+        });
+        });
 </script>
